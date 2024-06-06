@@ -13,15 +13,16 @@ func (app *application) routes() http.Handler{
 	// Create a new middleware chain containing the middleware specific to
 	// our dynamic application routes.
 	dynamicMiddleware := alice.New(app.Session.Enable)
+	dynamicMiddleware2 := alice.New(app.Session.Enable, app.Authenticatedmiddleware)
 
 
 	mux := pat.New()
 	// Handler functions
-	mux.Get("/", dynamicMiddleware.ThenFunc(app.Home))
-	mux.Post("/addTask",  dynamicMiddleware.ThenFunc(app.AddTask))
-	mux.Get("/getTask",  dynamicMiddleware.ThenFunc(app.GetTask))
-	mux.Post("/deleteTask",  dynamicMiddleware.ThenFunc(app.DeleteTask))
-	mux.Post("/updateTask",  dynamicMiddleware.ThenFunc(app.UpdateTask))
+	mux.Get("/", dynamicMiddleware2.ThenFunc(app.Home))
+	mux.Post("/addTask",  dynamicMiddleware2.ThenFunc(app.AddTask))
+	mux.Get("/getTask",  dynamicMiddleware2.ThenFunc(app.GetTask))
+	mux.Post("/deleteTask",  dynamicMiddleware2.ThenFunc(app.DeleteTask))
+	mux.Post("/updateTask",  dynamicMiddleware2.ThenFunc(app.UpdateTask))
 
 	// Add the five new routes.
 	mux.Get("/user/signup", dynamicMiddleware.ThenFunc(app.signupUserForm))

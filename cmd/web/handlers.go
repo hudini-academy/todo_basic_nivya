@@ -235,5 +235,7 @@ if isUser{
 
 
 func (app *application) logoutUser(w http.ResponseWriter, r *http.Request) {
-fmt.Fprintln(w, "Logout the user...")
+//fmt.Fprintln(w, "Logout the user...")
+	app.Session.Put(r,"Authenticated",false)
+	http.Redirect(w, r, "/user/login", http.StatusSeeOther)
 }
