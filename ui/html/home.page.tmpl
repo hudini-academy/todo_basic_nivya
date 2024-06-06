@@ -1,0 +1,32 @@
+{{template "base" .}}
+ 
+{{define "body"}}
+  <h2> Todo List </h2>
+   {{if ne .Flash ""}}
+           <div class="flash-message">
+           <p> Message : {{.Flash}} </p>
+           </div>
+    {{end}}   
+    <form action="/addTask" method="post">
+        <input type="text" name="TaskName" placeholder="Name">
+        <input type="text" name="Details" placeholder="Details">
+        <input type="submit" value="Add">
+    </form>
+    <ul>
+        {{range .Tasks}}
+            <li>{{.Name}}</li>
+            <li>{{.Details}}</li>
+           <form action="/deleteTask?id={{.ID}}" method="post">
+                <input type="hidden" name="id" value={{.ID}}>
+                <input type="submit" value="Delete">
+            </form>
+            <form action="/updateTask?id={{.ID}}" method="post">
+                <input type="hidden" name="id" value={{.ID}}>
+                <input type="text" name="TaskName" placeholder="Name">
+                <input type="text" name="Details" placeholder="Details">
+                <input type="submit" value="Update">
+            </form>
+            <br />
+        {{end}}
+    </ul>
+{{end}}

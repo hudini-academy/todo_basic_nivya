@@ -1,0 +1,33 @@
+{{define "base"}}
+<!doctype html>
+<html lang='en'>
+<head>
+    <link rel='stylesheet' href='/static/css/main.css'>
+    <link rel='shortcut icon' href='/static/img/favicon.ico' type='image/x-icon'/>
+    <title>ToDo</title>
+</head>
+<body>
+    <header>
+        <h1><a href='/'>TODO</a></h1>
+    </header>
+    <nav>
+        <div>
+            <a href='/'>Home</a>
+        </div>
+        <div>
+            <a href='/user/signup'>Signup</a>
+            <a href='/user/login'>Login</a>
+            <form action='/user/logout' method='POST'>
+                <button>Logout</button>
+            </form>
+        </div>
+    </nav>
+    <section>
+        {{template "body" .}}
+    </section>
+    <footer>
+        <p><a class="site" href="">By NI</a></p>
+    </footer>
+</body>
+</html>
+{{end}}

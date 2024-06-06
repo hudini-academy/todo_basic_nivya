@@ -1,0 +1,434 @@
+ERROR	2024/06/04 15:58:46 helpers.go:11: Error 1146 (42S02): Table 'todo.todos' doesn't exist
+goroutine 34 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:24 +0x5e
+main.(*application).serverError(0xc000130000, {0xb84850, 0xc0000ee0e0}, {0xb82be0?, 0xc0000b80a8?})
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/helpers.go:10 +0x5d
+main.(*application).Showtodo(0xc000130000, {0xb84850, 0xc0000ee0e0}, 0x27eed4f0598?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:115 +0x10d
+net/http.HandlerFunc.ServeHTTP(0xc00012a0d0?, {0xb84850?, 0xc0000ee0e0?}, 0x9f9eba?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0x739139?, {0xb84850, 0xc0000ee0e0}, 0xc0000a46c0)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+net/http.serverHandler.ServeHTTP({0xc00008ced0?}, {0xb84850?, 0xc0000ee0e0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc000126090, {0xb85068, 0xc0001282d0})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+
+ERROR	2024/06/04 16:34:10 handlers.go:99: Error 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '?' at line 1
+ERROR	2024/06/04 18:53:02 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).Updatetodo (handlers.go:178)
+ERROR	2024/06/04 19:18:04 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).updateList (handlers.go:173)
+ERROR	2024/06/04 19:18:05 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).updateList (handlers.go:173)
+ERROR	2024/06/04 19:18:06 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).updateList (handlers.go:173)
+ERROR	2024/06/04 19:18:08 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).updateList (handlers.go:173)
+ERROR	2024/06/04 19:19:36 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).updateList (handlers.go:175)
+ERROR	2024/06/05 06:12:59 handlers.go:182: Name not found for the given ID
+ERROR	2024/06/05 06:13:09 handlers.go:182: Name not found for the given ID
+ERROR	2024/06/05 06:14:44 handlers.go:164: Details not found for the given ID
+ERROR	2024/06/05 06:14:50 handlers.go:164: Details not found for the given ID
+ERROR	2024/06/05 06:17:25 handlers.go:171: Details not found for the given ID
+ERROR	2024/06/05 06:20:14 handlers.go:146: Form data - ID: 16, Name: bjhbj, Details: bjhk
+ERROR	2024/06/05 06:20:14 handlers.go:150: Updating with provided name and details
+ERROR	2024/06/05 06:20:27 handlers.go:146: Form data - ID: 14, Name: jhk, Details: ssa
+ERROR	2024/06/05 06:20:27 handlers.go:150: Updating with provided name and details
+ERROR	2024/06/05 06:20:37 handlers.go:146: Form data - ID: 10, Name: , Details: qs
+ERROR	2024/06/05 06:20:37 handlers.go:189: Checking task with ID: 1
+ERROR	2024/06/05 06:20:37 handlers.go:197: Name not found for the given ID: 10
+ERROR	2024/06/05 06:22:03 handlers.go:146: Form data - ID: 16, Name: h, Details: 
+ERROR	2024/06/05 06:22:03 handlers.go:166: Checking task with ID: 1
+ERROR	2024/06/05 06:22:03 handlers.go:174: Details not found for the given ID: 16
+ERROR	2024/06/05 06:22:16 handlers.go:146: Form data - ID: 16, Name: , Details: g
+ERROR	2024/06/05 06:22:16 handlers.go:189: Checking task with ID: 1
+ERROR	2024/06/05 06:22:16 handlers.go:197: Name not found for the given ID: 16
+ERROR	2024/06/05 06:25:28 handlers.go:146: Form data - ID: 14, Name: h, Details: 
+ERROR	2024/06/05 06:25:28 handlers.go:164: Only name provided, searching for existing details
+ERROR	2024/06/05 06:25:28 handlers.go:175: Details not found for the given ID: 14
+ERROR	2024/06/05 06:25:36 handlers.go:146: Form data - ID: 14, Name: , Details: g
+ERROR	2024/06/05 06:25:36 handlers.go:188: Only details provided, searching for existing name
+ERROR	2024/06/05 06:25:36 handlers.go:199: Name not found for the given ID: 14
+ERROR	2024/06/05 06:30:42 handlers.go:63: Added Task: {1 f sdsw}
+ERROR	2024/06/05 06:30:48 handlers.go:125: Form data - ID: 16, Name: e, Details: 
+ERROR	2024/06/05 06:30:48 handlers.go:126: Current TaskList:
+ERROR	2024/06/05 06:30:48 handlers.go:128: ID: 1, Name: f, Details: sdsw
+ERROR	2024/06/05 06:30:48 handlers.go:144: Only name provided, searching for existing details
+ERROR	2024/06/05 06:30:48 handlers.go:147: Checking task with ID: 1
+ERROR	2024/06/05 06:30:48 handlers.go:155: Details not found for the given ID: 16
+ERROR	2024/06/05 06:36:37 handlers.go:125: Form data - ID: 16, Name: h, Details: 
+ERROR	2024/06/05 06:36:37 handlers.go:126: Current TaskList:
+ERROR	2024/06/05 06:36:37 handlers.go:144: Only name provided, searching for existing details
+ERROR	2024/06/05 06:36:37 handlers.go:155: Details not found for the given ID: 16
+ERROR	2024/06/05 06:39:23 handlers.go:130: Form data - ID: 16, Name: k, Details: 
+ERROR	2024/06/05 06:39:23 handlers.go:131: Current TaskList:
+ERROR	2024/06/05 06:39:23 handlers.go:133: ID: 16, Name: bjhbj, Details: bjhk
+ERROR	2024/06/05 06:39:23 handlers.go:133: ID: 14, Name: jhk, Details: ssa
+ERROR	2024/06/05 06:39:23 handlers.go:133: ID: 10, Name: nk, Details: bbj
+ERROR	2024/06/05 06:39:23 handlers.go:149: Only name provided, searching for existing details
+ERROR	2024/06/05 06:39:23 handlers.go:152: Checking task with ID: 16
+ERROR	2024/06/05 06:39:23 handlers.go:164: Found details: bjhk
+ERROR	2024/06/05 06:39:35 handlers.go:130: Form data - ID: 16, Name: , Details: knk
+ERROR	2024/06/05 06:39:35 handlers.go:131: Current TaskList:
+ERROR	2024/06/05 06:39:35 handlers.go:133: ID: 16, Name: k, Details: bjhk
+ERROR	2024/06/05 06:39:35 handlers.go:133: ID: 14, Name: jhk, Details: ssa
+ERROR	2024/06/05 06:39:35 handlers.go:133: ID: 10, Name: nk, Details: bbj
+ERROR	2024/06/05 06:39:35 handlers.go:172: Only details provided, searching for existing name
+ERROR	2024/06/05 06:39:35 handlers.go:175: Checking task with ID: 16
+ERROR	2024/06/05 06:39:35 handlers.go:187: Found name: k
+ERROR	2024/06/05 06:47:42 handlers.go:146: Form data - ID: 16, Name: n, Details: 
+ERROR	2024/06/05 06:47:42 handlers.go:164: Only name provided, searching for existing details
+ERROR	2024/06/05 06:47:42 handlers.go:173: Details not found for the given ID: 16
+ERROR	2024/06/05 06:50:37 handlers.go:130: Form data - ID: 16, Name: n, Details: 
+ERROR	2024/06/05 06:50:37 handlers.go:131: Current TaskList:
+ERROR	2024/06/05 06:50:37 handlers.go:133: ID: 16, Name: k, Details: knk
+ERROR	2024/06/05 06:50:37 handlers.go:133: ID: 14, Name: jhk, Details: ssa
+ERROR	2024/06/05 06:50:37 handlers.go:133: ID: 10, Name: nk, Details: bbj
+ERROR	2024/06/05 06:50:37 handlers.go:149: Only name provided, searching for existing details
+ERROR	2024/06/05 06:50:37 handlers.go:152: Checking task with ID: 16
+ERROR	2024/06/05 06:50:37 handlers.go:164: Found details: knk
+ERROR	2024/06/05 15:35:22 server.go:3411: http: panic serving [::1]:58099: oops! something went wrong
+goroutine 21 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc000094270}, 0x333253487d34f459?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc000094270?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc0000892f0?, {0x434a90, 0xc000094270}, 0xc0000d45a0)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc000094270}, 0xc0000d45a0)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc000094270?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc000108540}, 0xc0000d45a0)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc000108540?}, 0xc000035b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc000089200?}, {0x434be0?, 0xc000108540?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc000106090, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:22 server.go:3411: http: panic serving [::1]:58100: oops! something went wrong
+goroutine 23 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc0001ac000}, 0x5356365051f60ac8?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc0001ac000?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc0001820f0?, {0x434a90, 0xc0001ac000}, 0xc00018e000)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc0001ac000}, 0xc00018e000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc0001ac000?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc0001a6000}, 0xc00018e000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc0001a6000?}, 0xc000117b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc000182030?}, {0x434be0?, 0xc0001a6000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0001062d0, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:23 server.go:3411: http: panic serving [::1]:58101: oops! something went wrong
+goroutine 35 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc0001ac228}, 0x1d03e006581c3b91?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc0001ac228?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc000182240?, {0x434a90, 0xc0001ac228}, 0xc0000d47e0)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc0001ac228}, 0xc0000d47e0)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc0001ac228?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc0001a61c0}, 0xc0000d47e0)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc0001a61c0?}, 0xc000117b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc0000893e0?}, {0x434be0?, 0xc0001a61c0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc000190120, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:23 server.go:3411: http: panic serving [::1]:58103: oops! something went wrong
+goroutine 37 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc00022e000}, 0x6c408d6700a75dc8?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc00022e000?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc000206060?, {0x434a90, 0xc00022e000}, 0xc000076000)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc00022e000}, 0xc000076000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc00022e000?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc00021e000}, 0xc000076000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc00021e000?}, 0xc000117b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc00002c060?}, {0x434be0?, 0xc00021e000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0001903f0, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:23 server.go:3411: http: panic serving [::1]:58104: oops! something went wrong
+goroutine 51 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc00022e228}, 0x5b62e4014f48d21d?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc00022e228?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc0002061b0?, {0x434a90, 0xc00022e228}, 0xc0000d4900)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc00022e228}, 0xc0000d4900)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc00022e228?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc00021e1c0}, 0xc0000d4900)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc00021e1c0?}, 0xc000117b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc000089440?}, {0x434be0?, 0xc00021e1c0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0002021b0, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:28 server.go:3411: http: panic serving [::1]:58105: oops! something went wrong
+goroutine 53 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc00022e438}, 0x79861dc6a55e7eab?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc00022e438?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc000206330?, {0x434a90, 0xc00022e438}, 0xc0000d4a20)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc00022e438}, 0xc0000d4a20)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc00022e438?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc00021e380}, 0xc0000d4a20)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc00021e380?}, 0xc000117b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc0000894d0?}, {0x434be0?, 0xc00021e380?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0002023f0, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:28 server.go:3411: http: panic serving [::1]:58106: oops! something went wrong
+goroutine 24 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc000008018}, 0x7d17bee7a8861d7f?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc000008018?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc00002c0f0?, {0x434a90, 0xc000008018}, 0xc00027a000)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc000008018}, 0xc00027a000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc000008018?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc00007c000}, 0xc00027a000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc00007c000?}, 0xc000113b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc0002063c0?}, {0x434be0?, 0xc00007c000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc000106360, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:35:28 server.go:3411: http: panic serving [::1]:58107: oops! something went wrong
+goroutine 6 [running]:
+net/http.(*conn).serve.func1()
+	C:/Program Files/Go/src/net/http/server.go:1898 +0xbe
+panic({0x353600?, 0x4315d0?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000094120, {0x434a90, 0xc000008240}, 0x7489b1298dc51b0?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00008eb60?, {0x434a90?, 0xc000008240?}, 0x3b382e?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc00002c2a0?, {0x434a90, 0xc000008240}, 0xc0000d4b40)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x434a90, 0xc000008240}, 0xc0000d4b40)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0x0?, {0x434a90?, 0xc000008240?}, 0x11a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logResponse.func3({0x434be0, 0xc00007c1c0}, 0xc0000d4b40)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:40 +0xb0
+net/http.HandlerFunc.ServeHTTP(0x115639?, {0x434be0?, 0xc00007c1c0?}, 0xc000113b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc000089590?}, {0x434be0?, 0xc00007c1c0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0000781b0, {0x435208, 0xc000089110})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+ERROR	2024/06/05 15:38:34 helpers.go:15: oops! something went wrong
+goroutine 20 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:24 +0x5e
+main.(*application).serverError(0xc00009e048, {0x1184b70, 0xc000154000}, {0x1182da0?, 0xc0000302a0?})
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/helpers.go:14 +0x5d
+main.(*application).routes.(*application).recoverPanic.func4.1()
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:57 +0xd7
+panic({0x10a3620?, 0x1181590?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc00009e048, {0x1184b70, 0xc000154000}, 0xd76717b4299e219e?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc0000a21a0?, {0x1184b70?, 0xc000154000?}, 0x11037bd?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc00002ce10?, {0x1184b70, 0xc000154000}, 0xc0001246c0)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x1184b70, 0xc000154000}, 0xc0001246c0)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0xc000035a58?, {0x1184b70?, 0xc000154000?}, 0xc000035a58?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logRequest.func3({0x1184b70, 0xc000154000}, 0xc0001246c0)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:32 +0x270
+net/http.HandlerFunc.ServeHTTP(0x10?, {0x1184b70?, 0xc000154000?}, 0xe6a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).recoverPanic.func4({0x1184b70?, 0xc000154000?}, 0xeb45cf?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:60 +0x7c
+net/http.HandlerFunc.ServeHTTP(0xe65639?, {0x1184b70?, 0xc000154000?}, 0xc000035b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc00002cd20?}, {0x1184b70?, 0xc000154000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0000ac090, {0x11851a8, 0xc000090450})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+
+ERROR	2024/06/05 15:38:38 helpers.go:15: oops! something went wrong
+goroutine 21 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:24 +0x5e
+main.(*application).serverError(0xc00009e048, {0x1184b70, 0xc0001541c0}, {0x1182da0?, 0xc000030420?})
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/helpers.go:14 +0x5d
+main.(*application).routes.(*application).recoverPanic.func4.1()
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:57 +0xd7
+panic({0x10a3620?, 0x1181590?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc00009e048, {0x1184b70, 0xc0001541c0}, 0xf622b6d669966c0b?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc0000a21a0?, {0x1184b70?, 0xc0001541c0?}, 0x11037bd?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc00002cf00?, {0x1184b70, 0xc0001541c0}, 0xc00018e000)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0x1184b70, 0xc0001541c0}, 0xc00018e000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0xc0000c1a58?, {0x1184b70?, 0xc0001541c0?}, 0xc0000c1a58?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logRequest.func3({0x1184b70, 0xc0001541c0}, 0xc00018e000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:32 +0x270
+net/http.HandlerFunc.ServeHTTP(0x10?, {0x1184b70?, 0xc0001541c0?}, 0xe6a0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).recoverPanic.func4({0x1184b70?, 0xc0001541c0?}, 0xeb45cf?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:60 +0x7c
+net/http.HandlerFunc.ServeHTTP(0xe65639?, {0x1184b70?, 0xc0001541c0?}, 0xc0000c1b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc000182030?}, {0x1184b70?, 0xc0001541c0?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc0000ac120, {0x11851a8, 0xc000090450})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+
+ERROR	2024/06/05 15:44:44 helpers.go:15: oops! something went wrong
+goroutine 8 [running]:
+runtime/debug.Stack()
+	C:/Program Files/Go/src/runtime/debug/stack.go:24 +0x5e
+main.(*application).serverError(0xc000008138, {0xbc4b70, 0xc0001b0000}, {0xbc2da0?, 0xc000186130?})
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/helpers.go:14 +0x5d
+main.(*application).routes.(*application).recoverPanic.func4.1()
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:57 +0xd7
+panic({0xae3620?, 0xbc1590?})
+	C:/Program Files/Go/src/runtime/panic.go:770 +0x132
+main.(*application).Home(0xc000008138, {0xbc4b70, 0xc0001b0000}, 0x7935087967d5e148?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/handlers.go:23 +0xa5
+net/http.HandlerFunc.ServeHTTP(0xc00002edd0?, {0xbc4b70?, 0xc0001b0000?}, 0xb437bd?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.(*ServeMux).ServeHTTP(0xc000182120?, {0xbc4b70, 0xc0001b0000}, 0xc000192000)
+	C:/Program Files/Go/src/net/http/server.go:2683 +0x1ad
+main.(*application).routes.secureHeaders.func2({0xbc4b70, 0xc0001b0000}, 0xc000192000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:23 +0xa8
+net/http.HandlerFunc.ServeHTTP(0xc000035a58?, {0xbc4b70?, 0xc0001b0000?}, 0xc000035a58?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).logRequest.func3({0xbc4b70, 0xc0001b0000}, 0xc000192000)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:32 +0x270
+net/http.HandlerFunc.ServeHTTP(0x10?, {0xbc4b70?, 0xc0001b0000?}, 0x8aa0f7?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+main.(*application).routes.(*application).recoverPanic.func4({0xbc4b70?, 0xc0001b0000?}, 0x8f45cf?)
+	C:/Users/NivyaIgnatious/Desktop/tasklist/cmd/web/middleware.go:60 +0x7c
+net/http.HandlerFunc.ServeHTTP(0x8a5639?, {0xbc4b70?, 0xc0001b0000?}, 0xc000035b68?)
+	C:/Program Files/Go/src/net/http/server.go:2166 +0x29
+net/http.serverHandler.ServeHTTP({0xc000182030?}, {0xbc4b70?, 0xc0001b0000?}, 0x6?)
+	C:/Program Files/Go/src/net/http/server.go:3137 +0x8e
+net/http.(*conn).serve(0xc00014c090, {0xbc51a8, 0xc00002d140})
+	C:/Program Files/Go/src/net/http/server.go:2039 +0x5e8
+created by net/http.(*Server).Serve in goroutine 1
+	C:/Program Files/Go/src/net/http/server.go:3285 +0x4b4
+
+ERROR	2024/06/05 15:44:44 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:17)
+ERROR	2024/06/05 15:45:47 helpers.go:14: oops! something went wrong
+%!s(MISSING)
+ERROR	2024/06/05 15:45:47 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/05 15:46:17 helpers.go:14: oops! something went wrong
+ERROR	2024/06/05 15:46:17 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/05 15:47:04 helpers.go:14: oops! something went wrong
+ERROR	2024/06/05 15:47:04 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/05 15:47:06 helpers.go:14: oops! something went wrong
+ERROR	2024/06/05 15:47:06 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/05 16:40:46 helpers.go:14: oops! something went wrong
+ERROR	2024/06/05 16:40:46 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/05 16:41:56 helpers.go:14: oops! something went wrong
+ERROR	2024/06/05 16:41:56 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/05 16:41:58 helpers.go:14: oops! something went wrong
+ERROR	2024/06/05 16:41:58 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/06 09:48:16 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc0000942a0] Task successfully created!}
+ERROR	2024/06/06 09:48:22 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000094ba0] }
+ERROR	2024/06/06 09:48:28 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000070120] }
+ERROR	2024/06/06 09:48:30 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000095080] }
+ERROR	2024/06/06 09:48:31 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000180120] }
+ERROR	2024/06/06 09:48:36 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000070600] }
+ERROR	2024/06/06 09:50:53 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000070ae0] }
+ERROR	2024/06/06 09:50:54 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000095620] }
+ERROR	2024/06/06 09:55:58 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000070fc0] }
+ERROR	2024/06/06 09:56:26 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc00018c060] }
+ERROR	2024/06/06 09:56:28 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc00018c5a0] }
+ERROR	2024/06/06 09:56:28 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc00018ca80] }
+ERROR	2024/06/06 09:56:28 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc00018cfc0] }
+ERROR	2024/06/06 09:59:57 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc000088120] }
+ERROR	2024/06/06 10:01:43 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc00018c060] }
+ERROR	2024/06/06 10:27:04 handlers.go:48: template: home.page.tmpl:12:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/06 10:29:43 handlers.go:48: template: home.page.tmpl:12:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
