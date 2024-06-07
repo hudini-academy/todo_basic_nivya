@@ -2,7 +2,7 @@
  
 {{define "body"}}
   <h2> Todo List </h2>
-   {{if ne .Flash ""}}
+   {{with .Flash}}
            <div class="flash-message">
            <p> Message : {{.Flash}} </p>
            </div>

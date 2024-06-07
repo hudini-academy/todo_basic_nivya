@@ -3,12 +3,13 @@ package main
 import (
 	"fmt"
 	"html/template"
-	"log"
 	"net/http"
 	"strconv"
 	"strings"
+
+	//"strings"
 	"todo/pkg/models"
-	"unicode/utf8"
+	//"unicode/utf8"
 )
 
 func (app *application) Home(w http.ResponseWriter, r *http.Request) {
@@ -23,7 +24,7 @@ func (app *application) Home(w http.ResponseWriter, r *http.Request) {
 		app.serverError(w, err)
 		return
 	}
-	// panic("oops! something went wrong") // Deliberate panic
+
 	// Using String Slice to add files which will give the template.
 	files := []string{
 		"./ui/html/home.page.tmpl",
@@ -53,15 +54,63 @@ func (app *application) Home(w http.ResponseWriter, r *http.Request) {
 
 }
 
+func (app *application) SpecialTask(w http.ResponseWriter, r *http.Request) {
+	//fmt.Fprintln(w, "Display the special task...")
+	s, err := app.Specialtask.Getspecial()
+	if err != nil {
+		app.serverError(w, err)
+		return
+	}
+
+	// Using String Slice to add files which will give the template.
+	files := []string{
+		"./ui/html/home.page.tmpl",
+		"./ui/html/base.layout.tmpl"}
+	ts, err := template.ParseFiles(files...)
+
+	//  checking for any error
+	if err != nil {
+		app.errorLog.Println(err.Error())
+		http.Error(w, "Internal Server Error", 500)
+		return
+	}
+
+	// Executing the template and checking for any error
+	err = ts.Execute(w, struct {
+		Tasks []*models.Todo
+		Flash string
+	}{
+		Tasks: s,
+		Flash: "",
+	})
+	if err != nil {
+		app.errorLog.Println(err.Error())
+		http.Error(w, "Internal Server error", 500)
+	}
+
+}
+
 func (app *application) AddTask(w http.ResponseWriter, r *http.Request) {
 	name := r.FormValue("TaskName")
 	details := r.FormValue("Details")
 	expires := "7"
 
-	// Check that the title field is not blank and is not more than 100
-	if !app.validatetask(r, name) && !app.validatetask(r, details) && !app.validatetask(r, expires) {
-		app.Session.Put(r, "Flash", "Task added successfully !")
+	_, err := app.todo.Insert(name, details, expires)
+	if err != nil {
+		app.serverError(w, err)
+		return
 	}
+
+	isSpec := strings.Contains(name, "special:")
+
+	if isSpec {
+		_, err := app.Specialtask.Insertspecial(name, details, expires)
+		if err != nil {
+			app.serverError(w, err)
+			return
+		}
+	}
+
 	// Redirecting to the home page by using http.Redirect
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 
@@ -69,14 +118,24 @@ func (app *application) AddTask(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) DeleteTask(w http.ResponseWriter, r *http.Request) {
 	// Get the value "id" from r.FormValue
-	value, _ := strconv.Atoi(r.FormValue("id"))
-
-	err := app.todo.Delete(value)
+	name := r.FormValue("TaskName")
+	
+	err := app.todo.Delete(name)
 	if err != nil {
 		app.errorLog.Println(err.Error())
 		app.serverError(w, err)
 		return
 	}
+ 
+	{
+	err := app.Specialtask.Deletespecial(name)
+	if err != nil {
+		app.errorLog.Println(err.Error())
+		app.serverError(w, err)
+		return
+	}
+}
+	
 
 	// Redirecting to the home page by using http.Redirect
 	http.Redirect(w, r, "/", http.StatusSeeOther)
@@ -91,8 +150,8 @@ func (app *application) GetTask(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Use the Model object's Get method to retrieve the data for aspecific record based on its ID. If no matching record is found,
-	// return a 404 Not Found response.
+	// Use the Model object's Get method to retrieve the data for aspecific record based on its ID. 
+
 	s, err := app.todo.Get(id)
 	if err == models.ErrNoRecord {
 		app.notFound(w)
@@ -159,19 +218,7 @@ func (app *application) fetchTasksFromDB() ([]*models.Todo, error) {
 	return tasks, nil
 }
 
-func (app *application) validatetask(r *http.Request, str string) bool {
-	if strings.TrimSpace(str) == "" {
-		app.Session.Put(r, "Flash", "One or more fields are empty ")
-		return true
-	} else if utf8.RuneCountInString(str) > 100 {
-		app.Session.Put(r, "Flash", "This name field is too long (maximum is 100 characters")
-		return true
-	}
-	return false
-}
-
-func (app *application) signupUserForm(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintln(w, "Display the user signup form...")
+func (app *application) signupUserForm(w http.ResponseWriter, r *http.Request){
 
 	files := []string{"./ui/html/signup.page.tmpl", "./ui/html/base.layout.tmpl"}
 	ts, err := template.ParseFiles(files...)
@@ -185,7 +232,6 @@ func (app *application) signupUserForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) signupUser(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintln(w, "Create a new user...")
 	username := r.FormValue("name")
 	useremail := r.FormValue("email")
 	userpassword := r.FormValue("password")
@@ -198,7 +244,6 @@ func (app *application) signupUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) loginUserForm(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintln(w, "Display the user login form...")
 	files := []string{"./ui/html/login.page.tmpl", "./ui/html/base.layout.tmpl"}
 	ts, err := template.ParseFiles(files...)
 
@@ -211,12 +256,10 @@ func (app *application) loginUserForm(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) loginUser(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintln(w, "Authenticate and login the user...")
 	useremail := r.FormValue("email")
 	userpassword := r.FormValue("password")
 
 	isUser, err := app.users.Authenticate(useremail, userpassword)
-	log.Println(isUser)
 	if err != nil {
 		app.errorLog.Println(err.Error())
 		http.Error(w, "Internal Server error", 500)
@@ -233,7 +276,6 @@ func (app *application) loginUser(w http.ResponseWriter, r *http.Request) {
 }
 
 func (app *application) logoutUser(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintln(w, "Logout the user...")
 	app.Session.Put(r, "Authenticated", false)
 	http.Redirect(w, r, "/user/login", http.StatusSeeOther)
 }

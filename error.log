@@ -432,3 +432,62 @@ ERROR	2024/06/06 09:59:57 handlers.go:48: template: home.page.tmpl:16:16: execut
 ERROR	2024/06/06 10:01:43 handlers.go:48: template: home.page.tmpl:16:16: executing "body" at <.>: range can't iterate over {[0xc00018c060] }
 ERROR	2024/06/06 10:27:04 handlers.go:48: template: home.page.tmpl:12:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
 ERROR	2024/06/06 10:29:43 handlers.go:48: template: home.page.tmpl:12:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/07 13:02:45 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:02:45 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:02:48 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:02:48 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:02:51 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:02:51 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:02:58 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:02:58 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:06:26 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:06:26 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:06:27 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:06:27 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:06:30 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:06:30 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:20:55 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:20:55 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:20:57 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:20:57 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:47:20 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:47:20 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:48:47 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:48:47 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:53:16 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:53:16 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:53:36 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:53:36 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:56:48 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:56:48 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:56:52 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:56:52 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 13:58:50 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 13:58:50 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 14:00:02 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 14:00:02 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 14:05:22 helpers.go:14: runtime error: invalid memory address or nil pointer dereference
+ERROR	2024/06/07 14:05:22 server.go:3411: http: superfluous response.WriteHeader call from main.(*application).serverError (helpers.go:16)
+ERROR	2024/06/07 14:06:50 handlers.go:81: template: home.page.tmpl:5:11: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:14:44 handlers.go:78: template: home.page.tmpl:5:11: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:17:42 handlers.go:81: template: home.page.tmpl:5:11: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:21:49 handlers.go:81: template: home.page.tmpl:5:11: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:23:20 handlers.go:81: template: home.page.tmpl:5:11: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:24:33 handlers.go:81: template: home.page.tmpl:5:10: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:24:36 handlers.go:81: template: home.page.tmpl:5:10: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:25:43 handlers.go:81: template: home.page.tmpl:5:13: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:25:51 handlers.go:81: template: home.page.tmpl:5:13: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:25:53 handlers.go:81: template: home.page.tmpl:5:13: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:25:53 handlers.go:81: template: home.page.tmpl:5:13: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:26:45 handlers.go:81: template: home.page.tmpl:5:10: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:32:04 handlers.go:125: Error 1146 (42S02): Table 'todo.special' doesn't exist
+ERROR	2024/06/07 14:32:04 helpers.go:14: Error 1146 (42S02): Table 'todo.special' doesn't exist
+ERROR	2024/06/07 14:34:40 handlers.go:81: template: home.page.tmpl:5:10: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:39:41 handlers.go:81: template: home.page.tmpl:5:10: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:40:05 handlers.go:81: template: home.page.tmpl:5:10: executing "body" at <.Flash>: can't evaluate field Flash in type []*models.Todo
+ERROR	2024/06/07 14:42:28 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/07 14:45:00 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/07 14:45:19 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/07 14:46:54 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/07 14:48:50 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/07 14:58:06 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string

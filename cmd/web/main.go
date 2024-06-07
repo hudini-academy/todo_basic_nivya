@@ -2,56 +2,53 @@ package main
 
 import (
 	"database/sql"
+	"flag"
 	"log"
 	"net/http"
+	"time"
 	"todo/pkg/models/mysql"
-	"flag"
-	"time" 
-	"github.com/golangcollege/sessions"
+
 	_ "github.com/go-sql-driver/mysql"
+	"github.com/golangcollege/sessions"
 )
 
 //  Define an application struct to hold the application-wide dependencies
 
 type application struct {
-	errorLog *log.Logger
-	InfoLog  *log.Logger
-	Session *sessions.Session
-	todo     *mysql.TodoModel
-	users *mysql.UserModel
-	
+	errorLog    *log.Logger
+	InfoLog     *log.Logger
+	Session     *sessions.Session
+	todo        *mysql.TodoModel
+	users       *mysql.UserModel
+	Specialtask *mysql.SpecialModel
 }
-
 
 func main() {
 	addr := ":4000"
 	infoLog, errorLog := initializeLogFiles()
 	secret := flag.String("secret", "s6Ndh+pPbnzHbS*+9Pk8qGWhTzbpa@ge", "Secret")
 
-	// To keep the main() function tidy I've put the code for creating a connec
-	// pool into the separate openDB() function below. We pass openDB() the DSN
-	// from the command-line flag.
+	// To keep the main() function tidy I've put the code for creating a connection
 
 	db, err := openDB("root:root@/todo?parseTime=true")
 	if err != nil {
 		errorLog.Fatal(err)
 	}
-	// We also defer a call to db.Close(), so that the connection pool is closed
-	// before the main() function exits.
+	//  defer a call to db.Close(), so that the connection pool is closed.
 	defer db.Close()
 
 	session := sessions.New([]byte(*secret))
 	session.Lifetime = 12 * time.Hour
 
-
 	// Initialize a new instance of application containing the dependencies.
-	
+
 	app := &application{
 		errorLog: errorLog,
 		InfoLog:  infoLog,
-		Session: session,
+		Session:  session,
 		todo:     &mysql.TodoModel{DB: db},
-		users: &mysql.UserModel{DB: db},
+		users:    &mysql.UserModel{DB: db},
+		Specialtask: &mysql.SpecialModel{DB: db},
 	}
 
 	srv := &http.Server{
@@ -78,4 +75,3 @@ func openDB(dsn string) (*sql.DB, error) {
 	}
 	return db, nil
 }
-

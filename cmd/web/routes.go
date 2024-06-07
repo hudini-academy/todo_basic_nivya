@@ -19,6 +19,7 @@ func (app *application) routes() http.Handler{
 	mux := pat.New()
 	// Handler functions
 	mux.Get("/", dynamicMiddleware2.ThenFunc(app.Home))
+	mux.Get("/specialTask", dynamicMiddleware2.ThenFunc(app.SpecialTask))
 	mux.Post("/addTask",  dynamicMiddleware2.ThenFunc(app.AddTask))
 	mux.Get("/getTask",  dynamicMiddleware2.ThenFunc(app.GetTask))
 	mux.Post("/deleteTask",  dynamicMiddleware2.ThenFunc(app.DeleteTask))
