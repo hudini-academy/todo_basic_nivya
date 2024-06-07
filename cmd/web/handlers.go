@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"html/template"
+	"log"
 	"net/http"
 	"strconv"
 	"strings"
@@ -36,7 +37,7 @@ func (app *application) Home(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	message := app.Session.PopString(r, "Flash");
+	message := app.Session.PopString(r, "Flash")
 
 	err = ts.Execute(w, struct {
 		Tasks []*models.Todo
@@ -58,8 +59,8 @@ func (app *application) AddTask(w http.ResponseWriter, r *http.Request) {
 	expires := "7"
 
 	// Check that the title field is not blank and is not more than 100
-	if !app.validatetask(r,name) && !app.validatetask(r,details) && !app.validatetask(r,expires){
-	app.Session.Put(r, "Flash", "Task added successfully !")
+	if !app.validatetask(r, name) && !app.validatetask(r, details) && !app.validatetask(r, expires) {
+		app.Session.Put(r, "Flash", "Task added successfully !")
 	}
 	// Redirecting to the home page by using http.Redirect
 	http.Redirect(w, r, "/", http.StatusSeeOther)
@@ -115,36 +116,35 @@ func (app *application) UpdateTask(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	value, _ := strconv.Atoi(r.FormValue("id"))
-	var name string
-	var details string
-	name = r.FormValue("TaskName")
-	details = r.FormValue("Details")
-	if len(name) != 0 && len(details) != 0 {
-		err := app.todo.UpdateList(value, name, details)
-		if err != nil {
-			app.errorLog.Println(err.Error())
-			http.Error(w, "Internal Server Error", 500)
-			return
-		}
-	} else if len(name) == 0 && len(details) == 0 {
-		http.Redirect(w, r, "/", http.StatusSeeOther)
-	} else if len(name) != 0 && len(details) == 0 {
-		err := app.todo.UpdateList(value, name, details)
-		if err != nil {
-			app.errorLog.Println(err.Error())
-			http.Error(w, "Internal Server Error", 500)
-			return
-		}
-	} else if len(name) == 0 && len(details) != 0 {
-		err := app.todo.UpdateList(value, name, details)
-		if err != nil {
-			app.errorLog.Println(err.Error())
-			http.Error(w, "Internal Server Error", 500)
-			return
-		}
+	// Parse the task ID from the form value
+	value, err := strconv.Atoi(r.FormValue("id"))
+	if err != nil {
+		app.errorLog.Println("Invalid task ID:", err.Error())
+		http.Error(w, "Bad Request", http.StatusBadRequest)
+		return
 	}
 
+	// Get task name and details from the form
+	name := r.FormValue("TaskName")
+	details := r.FormValue("Details")
+
+	// Log the received values for debugging
+	app.InfoLog.Printf("Received update request for Task ID %d with name: %s and details: %s", value, name, details)
+
+	// Check if both name and details are provided, or handle cases where one or both are missing
+	if len(name) == 0 && len(details) == 0 {
+		app.Session.Put(r, "Flash", "Empty fields cannot be  updated!")
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+		return
+	}
+
+	// Update the task in the todo list
+	err = app.todo.UpdateList(value, name, details)
+	if err != nil {
+		app.errorLog.Println("Error updating task:", err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
 	app.Session.Put(r, "Flash", "Task successfully updated!")
 
 	http.Redirect(w, r, "/", http.StatusSeeOther)
@@ -159,83 +159,81 @@ func (app *application) fetchTasksFromDB() ([]*models.Todo, error) {
 	return tasks, nil
 }
 
-func (app *application) validatetask(r *http.Request, str string) bool{
-	if strings.TrimSpace(str) ==""{
-		app.Session.Put(r, "Flash","One or more fields are empty ")
+func (app *application) validatetask(r *http.Request, str string) bool {
+	if strings.TrimSpace(str) == "" {
+		app.Session.Put(r, "Flash", "One or more fields are empty ")
 		return true
-	}else if utf8.RuneCountInString(str)>100{
-		app.Session.Put(r, "Flash","This name field is too long (maximum is 100 characters")
+	} else if utf8.RuneCountInString(str) > 100 {
+		app.Session.Put(r, "Flash", "This name field is too long (maximum is 100 characters")
 		return true
 	}
 	return false
 }
 
-func (app *application) signupUserForm(w http.ResponseWriter, r *http.Request){
-//fmt.Fprintln(w, "Display the user signup form...")
+func (app *application) signupUserForm(w http.ResponseWriter, r *http.Request) {
+	//fmt.Fprintln(w, "Display the user signup form...")
 
-    files := []string{"./ui/html/signup.page.tmpl" , "./ui/html/base.layout.tmpl"}
-    ts, err := template.ParseFiles(files...)
+	files := []string{"./ui/html/signup.page.tmpl", "./ui/html/base.layout.tmpl"}
+	ts, err := template.ParseFiles(files...)
 
 	if err != nil {
 		app.errorLog.Println(err.Error())
 		http.Error(w, "Internal Server error", 500)
 		return
 	}
-	ts.Execute(w,nil)
+	ts.Execute(w, nil)
 }
 
 func (app *application) signupUser(w http.ResponseWriter, r *http.Request) {
-//fmt.Fprintln(w, "Create a new user...")
-  username := r.FormValue("name")
-  useremail := r.FormValue("email")
-  userpassword := r.FormValue("password")
+	//fmt.Fprintln(w, "Create a new user...")
+	username := r.FormValue("name")
+	useremail := r.FormValue("email")
+	userpassword := r.FormValue("password")
 
-  err := app.users.Insert(username,useremail,userpassword)
-  if err != nil {
-	fmt.Println(err)
+	err := app.users.Insert(username, useremail, userpassword)
+	if err != nil {
+		fmt.Println(err)
+	}
+	http.Redirect(w, r, "/", http.StatusSeeOther)
 }
-  http.Redirect(w, r, "/", http.StatusSeeOther)
-}
-
 
 func (app *application) loginUserForm(w http.ResponseWriter, r *http.Request) {
-//fmt.Fprintln(w, "Display the user login form...")
-files := []string{"./ui/html/login.page.tmpl" , "./ui/html/base.layout.tmpl"}
-ts, err := template.ParseFiles(files...)
+	//fmt.Fprintln(w, "Display the user login form...")
+	files := []string{"./ui/html/login.page.tmpl", "./ui/html/base.layout.tmpl"}
+	ts, err := template.ParseFiles(files...)
 
-if err != nil {
-	app.errorLog.Println(err.Error())
-	http.Error(w, "Internal Server error", 500)
-	return
+	if err != nil {
+		app.errorLog.Println(err.Error())
+		http.Error(w, "Internal Server error", 500)
+		return
+	}
+	ts.Execute(w, app.Session.Pop(r, "Flash"))
 }
-ts.Execute(w,app.Session.Pop(r,"Flash"))
-}
-
 
 func (app *application) loginUser(w http.ResponseWriter, r *http.Request) {
-//fmt.Fprintln(w, "Authenticate and login the user...")
-useremail := r.FormValue("email")
-userpassword := r.FormValue("password")
+	//fmt.Fprintln(w, "Authenticate and login the user...")
+	useremail := r.FormValue("email")
+	userpassword := r.FormValue("password")
 
-isUser,err := app.users.Authenticate(useremail,userpassword)
-if err != nil {
-	app.errorLog.Println(err.Error())
-	http.Error(w, "Internal Server error", 500)
+	isUser, err := app.users.Authenticate(useremail, userpassword)
+	log.Println(isUser)
+	if err != nil {
+		app.errorLog.Println(err.Error())
+		http.Error(w, "Internal Server error", 500)
+	}
+	if isUser {
+		app.Session.Put(r, "Authenticated", true)
+		app.Session.Put(r, "Flash", "Login successfully")
+		http.Redirect(w, r, "/", http.StatusSeeOther)
+	} else {
+		app.Session.Put(r, "Flash", "Login failed")
+		http.Redirect(w, r, "/user/login", http.StatusSeeOther)
+		app.Session.Put(r, "Authenticated", false)
+	}
 }
-if isUser{
-	app.Session.Put(r,"Authenticated",true)
-	app.Session.Put(r,"Flash","Login successfully")
-	http.Redirect(w, r, "/", http.StatusSeeOther)
-}else{
-	app.Session.Put(r,"Flash","Login failed")	
-    http.Redirect(w, r, "/user/login", http.StatusSeeOther)
-	app.Session.Put(r,"Authenticated",false)
-}
-}
-
 
 func (app *application) logoutUser(w http.ResponseWriter, r *http.Request) {
-//fmt.Fprintln(w, "Logout the user...")
-	app.Session.Put(r,"Authenticated",false)
+	//fmt.Fprintln(w, "Logout the user...")
+	app.Session.Put(r, "Authenticated", false)
 	http.Redirect(w, r, "/user/login", http.StatusSeeOther)
 }
