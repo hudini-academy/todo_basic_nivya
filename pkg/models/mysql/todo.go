@@ -156,3 +156,14 @@ func (m *TodoModel) UpdateList(id int, name string, details string) error {
 	}
 	return nil
 }
+
+func (m *SpecialModel) UpdatespecialList(id int, name string, details string) error {
+	stmt := `update specialtask set name = ? , details = ?  where id = ?`
+
+	_, err := m.DB.Exec(stmt, name, details, id)
+	if err != nil {
+		return err
+	}
+	return nil
+}
+

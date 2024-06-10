@@ -118,7 +118,7 @@ func (app *application) AddTask(w http.ResponseWriter, r *http.Request) {
 
 func (app *application) DeleteTask(w http.ResponseWriter, r *http.Request) {
 	// Get the value "id" from r.FormValue
-	name := r.FormValue("TaskName")
+	name := r.FormValue("name")
 	
 	err := app.todo.Delete(name)
 	if err != nil {
@@ -127,20 +127,18 @@ func (app *application) DeleteTask(w http.ResponseWriter, r *http.Request) {
 		return
 	}
  
-	{
-	err := app.Specialtask.Deletespecial(name)
-	if err != nil {
-		app.errorLog.Println(err.Error())
-		app.serverError(w, err)
+	err1 := app.Specialtask.Deletespecial(name)
+	if err1 != nil {
+		app.errorLog.Println(err1.Error())
+		app.serverError(w, err1)
 		return
 	}
-}
 	
-
+	app.Session.Put(r, "Flash", "Task successfully deleted!")
 	// Redirecting to the home page by using http.Redirect
 	http.Redirect(w, r, "/", http.StatusSeeOther)
 
-	app.Session.Put(r, "Flash", "Task successfully deleted!")
+	
 }
 
 func (app *application) GetTask(w http.ResponseWriter, r *http.Request) {
@@ -203,6 +201,18 @@ func (app *application) UpdateTask(w http.ResponseWriter, r *http.Request) {
 		app.errorLog.Println("Error updating task:", err.Error())
 		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
 		return
+	}
+
+	isSpec := strings.Contains(name, "special:")
+
+	if isSpec {
+		err = app.Specialtask.UpdatespecialList(value, name, details)
+		if err != nil {
+		app.errorLog.Println("Error updating task:", err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+		return
+	}
+
 	}
 	app.Session.Put(r, "Flash", "Task successfully updated!")
 

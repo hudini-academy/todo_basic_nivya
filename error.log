@@ -491,3 +491,11 @@ ERROR	2024/06/07 14:45:19 handlers.go:51: template: home.page.tmpl:7:27: executi
 ERROR	2024/06/07 14:46:54 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
 ERROR	2024/06/07 14:48:50 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
 ERROR	2024/06/07 14:58:06 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:08:19 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:08:40 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:11:23 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:12:01 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:13:08 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:14:06 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:17:14 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string
+ERROR	2024/06/10 14:18:05 handlers.go:51: template: home.page.tmpl:7:27: executing "body" at <.Flash>: can't evaluate field Flash in type string

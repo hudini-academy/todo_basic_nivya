@@ -2,7 +2,7 @@
  
 {{define "body"}}
   <h2> Todo List </h2>
-   {{with .Flash}}
+   {{if .Flash}}
            <div class="flash-message">
            <p> Message : {{.Flash}} </p>
            </div>
@@ -16,7 +16,7 @@
         {{range .Tasks}}
             <li>{{.Name}}</li>
             <li>{{.Details}}</li>
-           <form action="/deleteTask?id={{.ID}}" method="post">
+           <form action="/deleteTask?id={{.ID}}&name={{.Name}}" method="post">
                 <input type="hidden" name="id" value={{.ID}}>
                 <input type="submit" value="Delete">
             </form>
